@@ -1,0 +1,8 @@
+{
+  "name": "bolo-translate",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "dev": "node server.js" },
+  "engines": { "node": ">=18" }
+}

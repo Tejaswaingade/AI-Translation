@@ -1,0 +1,18 @@
+{
+  "name": "Bolo – Voice & Text Translator",
+  "short_name": "Bolo",
+  "description": "Speak or type in your language. Instant, accurate voice and text translation powered by Gemini AI.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbf5ec",
+  "theme_color": "#e8805a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

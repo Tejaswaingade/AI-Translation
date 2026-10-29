@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2c221e"/>
+      <stop offset="100%" stop-color="#181412"/>
+    </linearGradient>
+    <linearGradient id="coralGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59473"/>
+      <stop offset="100%" stop-color="#e8805a"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#e8805a" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <!-- Background rounded squircle -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)"/>
+  
+  <!-- Outer glowing circle / soundwave -->
+  <circle cx="256" cy="230" r="140" fill="none" stroke="rgba(232,128,90,0.18)" stroke-width="8"/>
+  <circle cx="256" cy="230" r="110" fill="none" stroke="rgba(232,128,90,0.3)" stroke-width="6"/>
+
+  <!-- Center Microphone Graphic -->
+  <g filter="url(#glow)">
+    <!-- Mic Body -->
+    <rect x="216" y="140" width="80" height="150" rx="40" fill="url(#coralGrad)"/>
+    
+    <!-- Mic Arc / Cradle -->
+    <path d="M176,215 C176,275 336,275 336,215" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round"/>
+    
+    <!-- Mic Stand Stem -->
+    <line x1="256" y1="275" x2="256" y2="330" stroke="#fff" stroke-width="18" stroke-linecap="round"/>
+    
+    <!-- Mic Stand Base -->
+    <line x1="200" y1="330" x2="312" y2="330" stroke="#fff" stroke-width="18" stroke-linecap="round"/>
+  </g>
+
+  <!-- Soundwaves / Speech dots -->
+  <circle cx="120" cy="230" r="10" fill="url(#coralGrad)"/>
+  <circle cx="85" cy="230" r="6" fill="rgba(232,128,90,0.6)"/>
+  <circle cx="392" cy="230" r="10" fill="url(#coralGrad)"/>
+  <circle cx="427" cy="230" r="6" fill="rgba(232,128,90,0.6)"/>
+
+  <!-- App name text at bottom -->
+  <text x="256" y="420" text-anchor="middle" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="52" fill="#fdfbf9" letter-spacing="4">BOLO</text>
+  <circle cx="340" cy="414" r="6" fill="#e8805a"/>
+</svg>

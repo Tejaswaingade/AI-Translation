@@ -260,9 +260,10 @@ async function callTranslate(text,f,t){
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
 let active=null;
 function micError(code){
+  const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
   return({
-    "not-allowed":"Microphone blocked. Click the lock icon in the address bar and allow the microphone.",
-    "service-not-allowed":"Speech service blocked. Use Chrome/Edge over https or localhost.",
+    "not-allowed":"Microphone blocked. Click the lock/settings icon in the address bar and allow the microphone.",
+    "service-not-allowed":isIOS?"Apple blocks speech recognition in Chrome on iPhone. Please open this link in Safari!":"Speech service blocked. Use Chrome/Edge/Safari over https.",
     "no-speech":"Didn't hear anything. Check your mic and try again.",
     "audio-capture":"No microphone found. Plug one in or pick the right input in system settings.",
     "network":"Voice service unreachable. Speech recognition needs internet (Brave blocks it, use Chrome or Edge).",
@@ -446,8 +447,15 @@ $("diagRun").onclick=async()=>{
 
   // 3. browser
   const b=row("⏳","Browser support","");
-  if(SR)b.set("✅","Speech recognition available",navigator.userAgent.includes("Brave")?"Brave detected: voice often fails there, try Chrome or Edge.":"Good to go.");
-  else b.set("❌","Speech recognition not supported","Use Chrome, Edge or Safari. Firefox doesn't support it.");
+  const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent);
+  const isChromeIOS=isIOS&&(navigator.userAgent.includes("CriOS")||!navigator.userAgent.includes("Safari"));
+  if(isChromeIOS){
+    b.set("⚠️","Chrome on iPhone detected","Apple blocks speech service in Chrome on iOS. Open this page in Safari for voice to work!");
+  }else if(SR){
+    b.set("✅","Speech recognition available",navigator.userAgent.includes("Brave")?"Brave detected: voice often fails there, try Chrome or Edge.":"Good to go.");
+  }else{
+    b.set("❌","Speech recognition not supported","Use Chrome, Edge or Safari. Firefox doesn't support it.");
+  }
 
   // 4. mic permission + level
   const m=row("⏳","Microphone","Allow the microphone when your browser asks, then make some noise…");
